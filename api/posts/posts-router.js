@@ -93,4 +93,27 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.get("/:id/comments", async (req, res) => {
+  const { id } = req.params;
+  const idAvailable = await posts.findById(id);
+  if (idAvailable) {
+    posts
+      .findPostComments(id)
+      .then((comments) =>
+        res
+          .status(200)
+          .json(
+            comments.length > 0
+              ? { comments }
+              : { message: "Bu post için henüz yapılan yorum yoktur." }
+          )
+      )
+      .catch((err) =>
+        res.status(500).json({ message: "Yorumlar bilgisi getirilemedi." })
+      );
+  } else {
+    res.status(404).json({ message: "Girilen ID'li gönderi bulunamadı." });
+  }
+});
+
 module.exports = router;
