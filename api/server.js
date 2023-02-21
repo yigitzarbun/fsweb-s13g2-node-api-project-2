@@ -4,11 +4,12 @@
 const express = require("express");
 const server = express();
 server.use(express.json());
+
 const postsRoute = require("./../api/posts/posts-router");
 server.use("/posts", postsRoute);
 
 server.get("/", (req, res) => {
-  res.status(200).json("Hello");
+  res.status(200).json("Hello from the clean, simple and easy server.js file");
 });
 
 module.exports = server;
