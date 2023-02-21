@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
+    "start": "nodemon index.js",
     "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --silent",
     "resetdb": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "knex": "^2.0.0",
     "sqlite3": "^5.0.8"
   },
@@ -22,5 +23,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Workintech/fsweb-s13g2-node-api-project2.git"
-  }
+  },
+  "description": "## Giriş",
+  "bugs": {
+    "url": "https://github.com/Workintech/fsweb-s13g2-node-api-project2/issues"
+  },
+  "homepage": "https://github.com/Workintech/fsweb-s13g2-node-api-project2#readme",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
