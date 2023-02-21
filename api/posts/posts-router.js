@@ -78,4 +78,19 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  const idAvailable = await posts.findById(id);
+  if (idAvailable) {
+    posts
+      .remove(id)
+      .then((deletedPost) =>
+        res.status(200).json({ message: "Gönderi başarıyla silindi" })
+      )
+      .catch((err) => res.status(500).json({ message: "Gönderi silinemedi" }));
+  } else {
+    res.status(404).json({ message: "Belirtilen ID li gönderi bulunamadı" });
+  }
+});
+
 module.exports = router;
